@@ -1,5 +1,6 @@
-## 这里是说明
+###   你好欢迎来到xztech的C语言谭浩强代码仓库
 
-以下均为谭浩强代码优化
+> ###    offical email: xztech666@gmail.com
 
-# power by xztech
+### power by xztech
+
