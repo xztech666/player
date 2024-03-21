@@ -1,24 +1,24 @@
-//#define _CRT_SECURE_NO_WARNINGS  //Ô¤¶¨Òå,ÒòÎªscanf²»°²È«
-//#include<stdio.h> //ÒýÓÃÊäÈëÊä³öÍ·ÎÄ¼þ
+//#define _CRT_SECURE_NO_WARNINGS  //é¢„å®šä¹‰,å› ä¸ºscanfä¸å®‰å…¨
+//#include<stdio.h> //å¼•ç”¨è¾“å…¥è¾“å‡ºå¤´æ–‡ä»¶
 
 /*
-	µÚÒ»¸öC³ÌÐò
+	ç¬¬ä¸€ä¸ªCç¨‹åº
 */
 
-//.hÍ·ÎÄ¼þ
-//.cÊÇÔ´ÎÄ¼þ
-//.cppÊÇc++Ô´ÎÄ¼þ,¼æÈÝC
+//.hå¤´æ–‡ä»¶
+//.cæ˜¯æºæ–‡ä»¶
+//.cppæ˜¯c++æºæ–‡ä»¶,å…¼å®¹C
 //int main()
 //{
 //	printf("%s", "hello C");
 //
-//	return 0;//·µ»Ø0Õý³£
+//	return 0;//è¿”å›ž0æ­£å¸¸
 //}
 
 /*
-	ÇóÁ½ÊýÖ®ºÍ
+	æ±‚ä¸¤æ•°ä¹‹å’Œ
 
-	Ë¼Â·:ÉèÖÃÈý¸ö±äÁ¿,aºÍbÓÃÀ´´æ·ÅÁ½¸öÕûÊý,sumÓÃÀ´´æ·ÅºÍÊý.ÓÃ¸³ÖµÔËËã·û"="°ÑÏà¼ÓµÄ½á¹û´«µÝ¸øsum
+	æ€è·¯:è®¾ç½®ä¸‰ä¸ªå˜é‡,aå’Œbç”¨æ¥å­˜æ”¾ä¸¤ä¸ªæ•´æ•°,sumç”¨æ¥å­˜æ”¾å’Œæ•°.ç”¨èµ‹å€¼è¿ç®—ç¬¦"="æŠŠç›¸åŠ çš„ç»“æžœä¼ é€’ç»™sum
 */
 
 //int main()
@@ -32,7 +32,7 @@
 //}
 
 /*
-	ÇóÁ½¸öÕûÊýÖÐµÄ½Ï´óÕß
+	æ±‚ä¸¤ä¸ªæ•´æ•°ä¸­çš„è¾ƒå¤§è€…
 */
 
 //int main()
