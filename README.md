@@ -2,5 +2,5 @@
 
 > ###    offical email: xztech666@gmail.com
 
-### power by xztech
+### powered by xztech
 
