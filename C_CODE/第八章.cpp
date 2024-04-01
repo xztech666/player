@@ -175,22 +175,112 @@
 // x1,x2 称为输出参数(传指针,内部解引用)
 // 究极常用, 力扣刷题常见
 
-int Fun(int a, int b, int c,double* x1,double* x2)
-{
-	int d = b * b - 4 * a * c;
-	*x1 = (-b + sqrt(d)) / (2 * a);
-	*x2 = (-b - sqrt(d)) / (2 * a);
+//int Fun(int a, int b, int c,double* x1,double* x2)
+//{
+//	int d = b * b - 4 * a * c;
+//	*x1 = (-b + sqrt(d)) / (2 * a);
+//	*x2 = (-b - sqrt(d)) / (2 * a);
+//
+//	return 2; // 返回两个根
+//}
+//
+//
+//int main()
+//{
+//	double x1;
+//	double x2;
+//	Fun(3, 5, 1, &x1, &x2);
+//	printf("%lf,%lf\n", x1, x2);
+//
+//	return 0;
+//}
 
-	return 2; // 返回两个根
-}
+// 课本不合适案例  
 
+//int main()
+//{
+//	int* p; // 错误, 悬空指针, 野指针
+//	*p = 10;
+//
+//	return 0;
+//}
+
+
+// 通过指针引用数组
+
+/*
+	一维数组arr的名字arr表示整个数组只在如下情况
+		1.在定义数组的同一个函数中求sizeof.   例如:  int arr[10];  sizeof(arr) -> 40
+		2.在定义数组的同一个函数中,&arr+1表示加整个数组的大小   例如:  int arr[10],&arr,&arr+1
+		其他情况  arr都表示数组的起始地址(数组首元素地址)
+*/
+
+//int main()
+//{
+//	int arr[10] = { 1,3,5,7,9,11,13,15,17,19 };
+//	//int* p = &arr[0];  // 第一个元素int的地址
+//	int* p = arr; // 和上一行等价
+//	printf("%d,%d\n", arr[0], *p);
+//
+//	printf("%d\n", sizeof(arr)); // 表示整个数组的大小(字节数)
+//	printf("%d,%d\n", &arr, &arr + 1); // &arr+1表示加整个数组的大小(字节数)
+//
+//	return 0;
+//}
+
+
+// 指针的加法操作(运算)  前提这个指针指向一个数组,同时程序应该保存不越界
+
+//int main()
+//{
+//	int arr[10] = { 1,3,5,7,9,11,13,15,17,19 };
+//	int* p = arr;
+//	//for (int i = 0; i < 10; i++, p++) // 把指针往后调
+//	//{
+//	//	printf("%d ", *p); // 指针输出(访问)数组所有元素
+//	//	// p++
+//	//}
+//
+//	//for (int i = 0; i < 10; i++)
+//	//{
+//	//	printf("%d ", *p++);
+//	//}
+//
+//	for (int i = 0; i < 10; i++)
+//	{
+//		printf("%d ", *(p + i));
+//	}
+//
+//
+//	return 0;
+//}
+
+
+// 指针的减法运算
 
 int main()
 {
-	double x1;
-	double x2;
-	Fun(3, 5, 1, &x1, &x2);
-	printf("%lf,%lf\n", x1, x2);
+	int arr[10] = { 1,3,5,7,9,11,13,15,17,19 };
+	int* p = &arr[9];
+	// 从未到头输出数组的元素
+	//for (int i = 0; i < 10; i++)   // 把指针往前移动
+	//{
+	//	printf("%d ", *p);
+	//	--p;
+	//}
+
+	//for (int i = 0; i < 10; i++)   // 把指针往前移动
+	//{
+	//	printf("%d ", *p--);
+	//}
+
+	for (int i = 0; i < 10; i++)   // 把指针往前移动
+	{
+		printf("%d ", *(p-i));
+	}
 
 	return 0;
 }
+
+
+// 输出数组元素的多种方法
