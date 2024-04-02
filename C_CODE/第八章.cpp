@@ -229,7 +229,12 @@
 //}
 
 
-// 指针的加法操作(运算)  前提这个指针指向一个数组,同时程序应该保存不越界
+// 指针的加法操作(运算)  
+// 前提这个指针指向一个数组,同时程序应该保存不越界
+/*
+	p+整数,p++,++p合法
+	p-整数,p--,--p合法
+*/
 
 //int main()
 //{
@@ -258,29 +263,252 @@
 
 // 指针的减法运算
 
+//int main()
+//{
+//	int arr[10] = { 1,3,5,7,9,11,13,15,17,19 };
+//	int* p = &arr[9];
+//	// 从未到头输出数组的元素
+//	//for (int i = 0; i < 10; i++)   // 把指针往前移动
+//	//{
+//	//	printf("%d ", *p);
+//	//	--p;
+//	//}
+//
+//	//for (int i = 0; i < 10; i++)   // 把指针往前移动
+//	//{
+//	//	printf("%d ", *p--);
+//	//}
+//
+//	for (int i = 0; i < 10; i++)   // 把指针往前移动
+//	{
+//		printf("%d ", *(p-i));
+//	}
+//
+//	return 0;
+//}
+
+
+// 输出数组元素的多种方法
+
+// 有一个整形数组a, 有十个元素, 要求输出数组中的全部元素
+
+//int main()
+//{
+//	int arr[10];
+//	int i;
+//	printf("请输入十个整形数字:");
+//	for (i = 0; i < 10; ++i)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	for (i = 0; i < 10; ++i)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//	// 数组元素用数组名和下标表示
+//	printf("\n");
+//
+//	return 0;
+//}
+
+//int main()
+//{
+//	int arr[10];
+//	int i;
+//	int* p = arr;
+//	printf("请输入十个整形数字:");
+//	for (i = 0; i < 10; ++i)
+//	{
+//		scanf("%d", &arr[i]);
+//	}
+//	for (i = 0; i < 10; ++i)
+//	{
+//		printf("%d ", *(arr + i)); // printf("%d ",*(p + i));
+//	}
+//	// 通过数组名和元素序号计算元素地址找到该元素
+//	printf("\n");
+//
+//	return 0;
+//
+//}
+
+/*
+	指针的关系运算  >,<,>=,<=,==,!=
+	前提: 必须在同一个数组
+*/
+
+//int main()
+//{
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	// 从头到尾输出数组元素
+//	for (int* p = arr; p != &arr[10]; ++p) // p不等于第十一个元素的地址    标准规定可以使用尾后地址(指针)
+//	{
+//		printf("%d ", *p);
+//	}
+//	//for (int* p = arr; p <= &arr[9]; ++p)
+//	//for (int* p = arr; p < &arr[10]; p++)
+//
+//	return 0;
+//}
+
+
+// 一个错误,第一次循环已到数组尾后元素  越界
+
+//int main()
+//{
+//	int* p, i, arr[10];
+//	p = arr; // p指向arr[0]
+//	printf("请输入十个整型数字:");
+//	for (i = 0; i < 10; ++i)
+//	{
+//		scanf("%d", p++);
+//	}
+//	// p已经到达a的尾后指针
+//	p = arr;
+//	for (i = 0; i < 10; ++i, ++p)
+//	{
+//		printf("%d ", *p);
+//	}
+//	printf("\n");
+//
+//	return 0;
+//}
+
+/*
+	数组作为参数传递: 数组名仅仅表示数组首元素的地址
+		传数组名 + 数组长度
+*/
+
+// 输出数组的所有元素
+// p: 数组的起始地址
+// n: 数组长度
+
+//void Show(int *p, int n)
+//{
+//	for (int i = 0; i < n; i++)
+//	{
+//		printf("%d ", p[i]);
+//	}
+//	printf("\n");
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	Show(arr,sizeof(arr)/sizeof(arr[0]));
+//
+//	return 0;
+//}
+
+// 将数组arr中n个整数按相反顺序存放
+// x: 数组的起始地址, n: 元素个数
+
+//void inv(int* x, int n)
+//{
+//	int tmp;
+//	//for (int i = 0, j = n - 1; i < j; j--, i++) // 把x当作数组名操作,没有问题
+//	//{
+//	//	tmp = x[i];
+//	//	x[i] = x[j];
+//	//	x[j] = tmp;
+//	//}
+//
+//	for (int i = 0, j = n - 1; i < j; j--, i++) // 把x当作指针操作
+//	{
+//		tmp = *(x + i);
+//		*(x + i) = *(x + j);
+//		*(x + j) = tmp;
+//	}
+//}
+//
+//void Show(int *p, int n)
+//{	
+//	for (int i = 0; i < n; i++)
+//	{
+//		printf("%d ", p[i]);
+//	}
+//	printf("\n");
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,3,5,7,9,11,13,15,17,19 };
+//	inv(arr, sizeof(arr) / sizeof(arr[0]));
+//	Show(arr, sizeof(arr) / sizeof(arr[0]));
+//	
+//
+//	return 0;
+//}
+
+
+// 用指针方法对10个整数按由大到小顺序排序   (选择排序法)
+// 选择排序:  每次从待排序中找最小值和待排序的第一个值交换,直到结束
+// arr: 数组起始地址 n; 元素个数(元素的长度)
+
+void SelectSort1(int* arr, int n)
+{
+	int k; // 最小值的下标
+	int tmp;
+	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+	{
+		k = i;
+		for (int j = i + 1; j < n; ++j)
+		{
+			if (arr[j] < arr[k]) // 找到最小值,更新下标
+			{
+				k = j;
+			}
+		}
+		if (k != i) // 把第一个值和最小值交换
+		{
+			// 把最小的放在最前面
+			tmp = arr[i];
+			arr[i] = arr[k];
+			arr[k] = tmp;
+		}
+	}
+}
+
+void SelectSort2(int* arr, int n)
+{
+	int k; // 最小值的下标
+	int tmp; // 临时变量
+	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+	{
+		k = i;
+		for (int j = i + 1; j < n; ++j)
+		{
+			if (*(arr+j) < *(arr+k)) // 找到最小值,更新下标
+			{
+				k = j;
+			}
+		}
+		if (k != i) // 把第一个值和最小值交换
+		{
+			// 把最小的放在最前面
+			tmp = *(arr+i);
+			*(arr + i) = *(arr + k);
+			*(arr + k) = tmp;
+		}
+	}
+}
+
+void Show(int *p, int n)
+{	
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ", p[i]);
+	}
+	printf("\n");
+}
+
 int main()
 {
-	int arr[10] = { 1,3,5,7,9,11,13,15,17,19 };
-	int* p = &arr[9];
-	// 从未到头输出数组的元素
-	//for (int i = 0; i < 10; i++)   // 把指针往前移动
-	//{
-	//	printf("%d ", *p);
-	//	--p;
-	//}
-
-	//for (int i = 0; i < 10; i++)   // 把指针往前移动
-	//{
-	//	printf("%d ", *p--);
-	//}
-
-	for (int i = 0; i < 10; i++)   // 把指针往前移动
-	{
-		printf("%d ", *(p-i));
-	}
+	int arr[] = { 1,15,9748,156,153,6,123,321,48,9 };
+	SelectSort2(arr, sizeof(arr) / sizeof(arr[0]));
+	Show(arr, sizeof(arr) / sizeof(arr[0]));
 
 	return 0;
 }
 
 
-// 输出数组元素的多种方法
