@@ -445,70 +445,204 @@
 // 选择排序:  每次从待排序中找最小值和待排序的第一个值交换,直到结束
 // arr: 数组起始地址 n; 元素个数(元素的长度)
 
-void SelectSort1(int* arr, int n)
+//void SelectSort1(int* arr, int n)
+//{
+//	int k; // 最小值的下标
+//	int tmp;
+//	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+//	{
+//		k = i;
+//		for (int j = i + 1; j < n; ++j)
+//		{
+//			if (arr[j] < arr[k]) // 找到最小值,更新下标
+//			{
+//				k = j;
+//			}
+//		}
+//		if (k != i) // 把第一个值和最小值交换
+//		{
+//			// 把最小的放在最前面
+//			tmp = arr[i];
+//			arr[i] = arr[k];
+//			arr[k] = tmp;
+//		}
+//	}
+//}
+//
+//void SelectSort2(int* arr, int n)
+//{
+//	int k; // 最小值的下标
+//	int tmp; // 临时变量
+//	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+//	{
+//		k = i;
+//		for (int j = i + 1; j < n; ++j)
+//		{
+//			if (*(arr+j) < *(arr+k)) // 找到最小值,更新下标
+//			{
+//				k = j;
+//			}
+//		}
+//		if (k != i) // 把第一个值和最小值交换
+//		{
+//			// 把最小的放在最前面
+//			tmp = *(arr+i);
+//			*(arr + i) = *(arr + k);
+//			*(arr + k) = tmp;
+//		}
+//	}
+//}
+//
+//void Show(int *p, int n)
+//{	
+//	for (int i = 0; i < n; i++)
+//	{
+//		printf("%d ", p[i]);
+//	}
+//	printf("\n");
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,15,9748,156,153,6,123,321,48,9 };
+//	SelectSort2(arr, sizeof(arr) / sizeof(arr[0]));
+//	Show(arr, sizeof(arr) / sizeof(arr[0]));
+//
+//	return 0;
+//}
+
+
+/*
+	一维数组以及二维数组指针含义
+*/
+
+//int main()
+//{
+//	int arr[4];
+//	int brr[3][4] = { {1,2,3,4},{5,6,7,8},{9,10,11,12} }; // 行优先
+//	int* p = arr; // arr的类型就是int*
+//	p = arr + 1; // arr + 1的类型还是int*
+//	int a = arr[0]; // arr[0]的类型是int
+//
+//	// int** p2 = brr; // 错误的,说明brr的类型不是int **
+//	// 必须把brr想象为一维数组   把每行视为一个元素
+//	int(*p2)[4] = brr; // brr的类型为int(*)[4]
+//	int* p3 = brr[0]; // brr[0]的类型为int *
+//	// brr[0] 就是一维数组   arr也是一维数组  所以,brr[0]和arr含义相同
+//	p2 = brr + 1; // brr + 1的类型为int(*)[4]  相当于第二行
+//	p3 = brr[0] + 1; // brr[0] + 1的类型为int *
+//	int b = brr[0][0]; // brr[0][0]的类型是int
+//	b = brr[0][0] + 1; // brr[0][0] + 1的类型是int
+//
+//	return 0;
+//}
+
+
+/*
+	通过指针引用多维数组     重要: 笔试 面试
+*/
+
+// 输出二维数组,所有元素的值
+// void Show(int brr[3][4]) // 不太对, 3是个无效值,等同下一行
+// void Show(int brr[][4]) // 等同下一行
+void Show(int (*brr)[4])
 {
-	int k; // 最小值的下标
-	int tmp;
-	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+	for (int i = 0; i < 3; ++i)
 	{
-		k = i;
-		for (int j = i + 1; j < n; ++j)
+		for (int j = 0; j < 4; ++j)
 		{
-			if (arr[j] < arr[k]) // 找到最小值,更新下标
-			{
-				k = j;
-			}
+			printf("%d ", brr[i][j]);
 		}
-		if (k != i) // 把第一个值和最小值交换
-		{
-			// 把最小的放在最前面
-			tmp = arr[i];
-			arr[i] = arr[k];
-			arr[k] = tmp;
-		}
+		printf("\n");
 	}
 }
 
-void SelectSort2(int* arr, int n)
+void Show(int(*brr)[4],int row)
 {
-	int k; // 最小值的下标
-	int tmp; // 临时变量
-	for (int i = 0; i < n - 1; ++i)  // 循环的趟数
+	for (int i = 0; i < row; ++i)
 	{
-		k = i;
-		for (int j = i + 1; j < n; ++j)
+		for (int j = 0; j < 4; ++j)
 		{
-			if (*(arr+j) < *(arr+k)) // 找到最小值,更新下标
-			{
-				k = j;
-			}
+			printf("%d ", brr[i][j]);
 		}
-		if (k != i) // 把第一个值和最小值交换
-		{
-			// 把最小的放在最前面
-			tmp = *(arr+i);
-			*(arr + i) = *(arr + k);
-			*(arr + k) = tmp;
-		}
+		printf("\n");
 	}
 }
 
-void Show(int *p, int n)
-{	
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d ", p[i]);
-	}
-	printf("\n");
-}
+//int main()
+//{
+//	int a[3][4] = { 1,2,3,4,5,6,7,8,9,10,11,12 };
+//	Show(a, 3);
+//	//Show(a);
+//	/*for (int i = 0; i < 3; ++i)
+//	{
+//		for (int j = 0; j < 4; ++j)
+//		{
+//			printf("%d ", a[i][j]);
+//		}
+//		printf("\n");
+//	}*/
+//
+//
+//	return 0;
+//}
+
+/*
+	通过指针引用字符串
+
+	字符串常量和字符数组:
+*/
+
+//int main()
+//{
+//	char str1[] = "hello world"; // 是字符数组,是字符串
+//	// char* str2 = "hello world"; // 是字符串,是字符常量  在vs2022中语法错误
+//	const char* str2 = "hello world"; // 是字符串,是字符常量
+//	// "hello world"需要12个字节的空间,如果是32位系统,str2才要4字节
+//	printf("%s\n%s\n", str1, str2);
+//
+//	str1[0] = 'x'; // 数组中每一个元素都能修改
+//	str2[0] = 'x'; // 能编译,但是运行崩溃(字符串常量,不能修改)
+//
+//	return 0;
+//}
+
+/*
+	const: 不允许修改(其修饰的)内容
+
+	1. 基本类型对于const是透明的 例如: const int ca = 10;等同于 int const ca =10;
+	2. const修饰直接右边的值
+*/
+
+//int main()
+//{
+//	int a = 10;
+//	a = 20;
+//	printf("%d\n", a);  // 可读可写
+//	const int ca = 10; // 只读,不允许修改ca的值
+//	ca = 20; // 错误
+//
+//	return 0;
+//}
 
 int main()
 {
-	int arr[] = { 1,15,9748,156,153,6,123,321,48,9 };
-	SelectSort2(arr, sizeof(arr) / sizeof(arr[0]));
-	Show(arr, sizeof(arr) / sizeof(arr[0]));
+	int a = 10;
+	int b = 20;
+	int* p = &a;
+	p = &b; // 修改p的内容
+	*p = 100; // 修改*p的内容
+	printf("%d,%d", p, *p);
+
+	const int* p2 = &a;
+	p2 = &b;
+	// *p2 = 100; // 错误
+	int const* p3 = &a; // 等同p2
+	p3 = &a;
+	// *p3 = &a; // 错误
+	int* const p4 = &a;
+	// p4 = &b; // 错误
+	*p4 = 100;
 
 	return 0;
 }
-
-
