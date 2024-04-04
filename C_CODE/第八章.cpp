@@ -3,6 +3,7 @@
 #include<math.h>
 #include<string.h>
 #include<ctype.h>
+#include<stdlib.h>
 
 /*
 	指针: 就是地址
@@ -625,24 +626,163 @@ void Show(int(*brr)[4],int row)
 //	return 0;
 //}
 
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	int* p = &a;
+//	p = &b; // 修改p的内容
+//	*p = 100; // 修改*p的内容
+//	printf("%d,%d", p, *p);
+//
+//	const int* p2 = &a;
+//	p2 = &b;
+//	// *p2 = 100; // 错误
+//	int const* p3 = &a; // 等同p2
+//	p3 = &a;
+//	// *p3 = &a; // 错误
+//	int* const p4 = &a;
+//	// p4 = &b; // 错误
+//	*p4 = 100;
+//
+//	return 0;
+//}
+
+
+/*
+	不适用库函数,实现字符串复制
+
+	字符串和普通数组的区别: 
+		字符串可以通过'\0'判断结尾
+*/
+
+
+// des:目的地址
+// src: 源字符串的地址 
+
+//void Mystrcpy(char* des,const char* src)
+//{
+//	int i;
+//	for (i = 0; src[i] != '\0'; ++i)
+//	{
+//		des[i] = src[i];
+//	}
+//	des[i] = '\0';
+//}
+//
+//
+//int main()
+//{
+//	char str1[] = "abcde";
+//	char str2[10];
+//	// 通过调用Mystrcpy,实现把str1复制到str2中
+//	Mystrcpy(str2, str1);
+//	// strcpy()
+//	printf("str2=%s", str2);
+//	
+//
+//	return 0;
+//}
+
+/*
+	指向函数的指针     把函数作为参数传递
+	函数族
+	标准规定: 函数名也表示函数的入口地址
+*/
+
+int Max(int a,int b)
+{
+	return a >= b ? a : b;
+}
+
+int Min(int a, int b)
+{
+	return a <= b ? a : b;
+}
+
+int Avg(int a, int b)
+{
+	return (a + b) / 2;
+}
+
+//int main()
+//{
+//	int(*pfun)(int, int);// pfun一定是指针,该指针指向函数,函数参数为int类型,返回值也是int
+//	pfun = Max;
+//	printf("%d\n", pfun(10, 20));
+
+	//pfun = Min;
+	//printf("%d\n", pfun(10, 20));
+
+	//pfun = Avg;
+	////pfun = &Avg;
+	//printf("%d\n", pfun(10, 20));
+
+//	return 0;
+//}
+
+
+/*
+	快排
+
+	qsort: 最不好处理的如何比较两个数据的大小
+
+	提供比较依据
+*/
+
+int Cmp_int(const void* vp1, const void* vp2)
+{
+	return *(int*)vp1 - *(int*)vp2; // 还原本质
+}
+
+/*
+	返回值: 第一个 > 第二个  返回大于0的数字
+			第一个 == 第二个 返回0
+			第一个 < 第二个  返回小于0的数字
+*/
+
+int Cmp_double(const void* vp1, const void* vp2)
+{
+	double tmp = *(double*)vp1 - *(double*)vp2;
+	if (tmp > 0)
+	{
+		return 1;
+	}
+	else if (tmp < 0)
+	{
+		return -1;
+	}
+	else
+	{
+		return 0;
+	}
+		
+}
+
+//int main()
+//{
+//	int arr[] = { 1,3,5,9,0,12,13,41,22,56,6,2 };
+//	// 对arr排序
+//	double brr[] = { 34.5,12.3,56.7,89.2,34.3,34.2 };
+//	// 对brr排序
+//
+//	int len1 = sizeof(arr) / sizeof(arr[0]);
+//	int len2 = sizeof(brr) / sizeof(brr[0]);
+//
+//	qsort(arr, len1, sizeof(arr[0]), Cmp_int);
+//	qsort(brr, len2, sizeof(brr[0]), Cmp_double);
+//	// 库函数,快排
+//
+//	return 0;
+//}
+
+/*
+	动态内存分配
+*/
+
 int main()
 {
-	int a = 10;
-	int b = 20;
-	int* p = &a;
-	p = &b; // 修改p的内容
-	*p = 100; // 修改*p的内容
-	printf("%d,%d", p, *p);
 
-	const int* p2 = &a;
-	p2 = &b;
-	// *p2 = 100; // 错误
-	int const* p3 = &a; // 等同p2
-	p3 = &a;
-	// *p3 = &a; // 错误
-	int* const p4 = &a;
-	// p4 = &b; // 错误
-	*p4 = 100;
 
 	return 0;
 }
