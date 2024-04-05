@@ -777,12 +777,82 @@ int Cmp_double(const void* vp1, const void* vp2)
 //}
 
 /*
+	局部变量: 分配的内存区域在栈,很小(1-10M)
 	动态内存分配
+		使用的场景:
+			1.需要大容量内存时
+			2.在一个函数创建的内存在别的函数中还需要使用
+*/
+
+char* GetMemroy()
+{
+	//char str[] = "梦想总是要有的,万一实现了呢";
+	char* str = (char*)malloc(100 * sizeof(char));
+	strcpy(str, "梦想总是要有的,万一实现了呢");
+
+	return str;// 已经被销毁
+}
+
+//int main()
+//{
+//	// char arr[100000000] = "";  // 程序崩溃
+//	// printf("好了\n");
+//
+//	char* p = GetMemroy();
+//	printf("%s\n", p);
+//
+//
+//	return 0;
+//}
+
+/*
+	如何创建动态内存
+	void: 没有,可以修饰返回值和参数列表
+	void *: 没有类型信息的指针,这个指针仅仅只记录地址
+		malloc: 创建内存,需要引用 <stdlib.h> 失败返回NULL 成功返回地址
+		calloc: 创建内存  把每个元素置为0
+		realloc: 创建内存  主要用于修改动态内存的大小
+		free: 释放内存  如果不是释放,会出现内存泄漏
 */
 
 int main()
 {
+	// 需要创建100M的内存
+	/*void* p = malloc(1024 * 1024 * 100);
+	if (p == NULL)
+	{
+		printf("申请失败了\n");
+	}
+	printf("好了");
+	getchar();*/
 
+	// 申请100个int单元
+	/*int n = 100;
+	int *arr = (int *)calloc(n,sizeof(int));
+	for (int i = 0; i < n; ++i)
+	{
+		arr[i] = i;
+	}*/
+
+	/*char* p = GetMemroy();
+	printf("%s\n", p);
+	free(p);*/
+
+	// 申请10个int单元
+	int n = 10;
+	//int arr[n]; // vs2022变量不能作为数组长度
+	int* arr = (int*)malloc(n * sizeof(int));
+	for (int i = 0; i < n; ++i)
+	{
+		arr[i] = i;
+	}
+	// 使用过程中,发现内存不够,需要2n个单元  realloc
+	arr = (int*)realloc(arr,2*n*sizeof(int));  // 光标移动到然后F1, 查看版本手册
+	for (int i = 0; i < 2 * n; ++i)
+	{
+		arr[i] = i;
+	}
+	free(arr);
 
 	return 0;
 }
