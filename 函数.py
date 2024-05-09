@@ -4,6 +4,7 @@
 # 定义: def  函数名():
 #             函数体
 # 调用: 函数名()
+# dir(__builtins__)   查看内置函数
 
 # while True:
 #    number = input("请输入手机号:")
