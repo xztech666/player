@@ -21,6 +21,33 @@
 #    else:
 #        print(f'{number}不是手机号')
 
+# 内置函数和我们自定义的函数有什么区别呢?
+
+# print()
+# print("hello world!")
+#
+# number(123456789)
+
+# 注意上面的代码时字符串,这里传入参数是整形要转换类型
+
+# def number(num):
+#     if str(num)[0] == '1' and len(str(num)) == 11 and str(num).isdigit():
+#         print(f"{num}是手机号")
+#
+#     else:
+#         print(f"{num}不是手机号")
+#
+# number(12345678911)
+
+# print()
+'''
+*args：可变参数，表示要打印的任意数量的对象。
+sep：字符串，用于分隔多个对象，默认值为空格。
+end：字符串，用于结尾， 默认值 为换行符。
+file：文件对象，用于指定输出目标，默认值为标准输出 sys.stdout。
+'''
+
+
 # 函数的参数
 # 函数名(x)  x称为必备参数 必须传入值
 # 函数名(y = n) y称为默认参数  不传入值时值为n  传入值(m)时为m
@@ -39,6 +66,56 @@
 # 获取参数的顺序
 # 必备->默认参数->不定长参数(*args->**kwargs)
 # 指定传参(关键字实参) func(y=n,x=m)
+
+# print()
+'''
+*args：可变参数，表示要打印的任意数量的对象。
+sep：字符串，用于分隔多个对象，默认值为空格。
+end：字符串，用于结尾， 默认值 为换行符。
+file：文件对象，用于指定输出目标，默认值为标准输出 sys.stdout。
+'''
+
+
+# def number(num, phone='华为', *args):
+#     if str(num)[0] == '1' and len(str(num)) == 11 and str(num).isdigit():
+#         print(f"{num}是手机号")
+#         print(f'手机是{phone}')
+#         print(args)
+#     else:
+#         print(f'{num}不是手机号')
+#         print(f'手机是{phone}')
+#         print(args)
+#
+#
+# number(13151487145, 'vivo', 156, 1, 2, 3, 4, 5)  # 元组保存下来多余的
+# number(13151487145, 'vivo', 156, 1, 2, 3, 4, [123, 68, 45], (1, 54, 7), {'a': 1, 'b': 2})
+
+# def number(num, phone='华为', *args, **kwargs):
+#     if str(num)[0] == '1' and len(str(num)) == 11 and str(num).isdigit():
+#         print(f"{num}是手机号")
+#         print(f'手机是{phone}')
+#         print(args)
+#         print(kwargs)
+#     else:
+#         print(f'{num}不是手机号')
+#         print(f'手机是{phone}')
+#         print(args)
+#         print(kwargs)
+#
+#
+# number(13151487145, 'vivo', 156, 1, 2, 3, 4, [123, 68, 45], (1, 54, 7), {'a': 1, 'b': 2}, a=1, b=3, c=4)
+
+
+# dict_a = dict(a=1,b=2)
+# print(dict_a)
+
+# 获取参数的顺序
+def func(x, y=1, *args, **kwargs):
+    print(x, y, args, kwargs)
+
+
+func(13245, 12, 'asd', 1, 3, 5, a=1, b=2)
+func(x=1, y=5)
 
 # return    返回值
 # 返回什么   变量接收到的就是什么   没有返回值时  变量接受的是None
