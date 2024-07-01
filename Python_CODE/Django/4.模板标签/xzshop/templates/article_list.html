@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+</head>
+<!--<script>-->
+<!--    setInterval(function() {-->
+<!--        var now = new Date();-->
+<!--        var formattedDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();-->
+<!--        document.getElementById('current-time').innerHTML = formattedDate;-->
+<!--    }, 1000); // 1000 milliseconds = 1 second-->
+<!--</script>-->
+<body>
+<!--    <div id="current-time">-->
+<!--        {{ now | date:'Y-m-d H:i:s' }}-->
+<!--    </div>-->
+    {% for article in articles %}
+        {% if article.chlname == "人民网" %}
+            <div><a href="{{ article.url }}">{{ article.title }}</a><span>&nbsp;&nbsp;人民网!!</span></div>
+        {% else %}
+            <div><a href="{{ article.url }}">{{ article.title }}</a></div>
+        {% endif %}
+    {% endfor %}
+</body>
+</html>

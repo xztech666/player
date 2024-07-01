@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+    <!-- <link rel="stylesheet" href="/static/css/my.css">-->
+    {% load static %}
+    <!--加载标签-->
+    <link rel="stylesheet" href="{% static 'css/my.css' %}">
+</head>
+<script src="{% static 'js/my.js' %}"></script>
+
+<body>
+    <img src="{% static 'img/1.jpg' %}">
+    <div>
+        {{content}}
+    </div>
+    <div>
+    <!--模板变量-->
+        {{name}}
+    </div>
+    <div>
+        {{age}}
+    </div>
+    <div>
+    <!--模板过滤器-->
+        {{name  | lower | capfirst}}
+    </div>
+    <div>
+        {{desc | default:'作者太懒,什么都没留下!!'}}
+    </div>
+    <div id="current-time">
+        {{now | date:'Y-m-d H:i:s'}}
+    </div>
+    <div>
+    <!--取消转义-->
+        {{ html | safe}}
+    </div>
+    <div>
+    <!--去掉所有的html标签-->
+        {{html | striptags}}
+    </div>
+    <div>
+        {{float | floatformat}}
+    </div>
+    <div>
+        {{float | floatformat:'2'}}
+    </div>
+    <div>
+        {{age | add:age1}}
+    </div>
+</body>
+</html>
