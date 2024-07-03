@@ -61,11 +61,11 @@ class UpdateDateDemo(QWidget):
 
     def load_data(self):
         # 创建线程
-        self.get_data_thread = GetDataThread()
+        get_data_thread = GetDataThread()
         # 信号与槽的连接
-        self.get_data_thread.update_data.connect(self.update_data)
+        get_data_thread.update_data.connect(self.update_data)
         # 启动线程
-        self.get_data_thread.start()
+        get_data_thread.start()
 
     def update_data(self, data):
         for title in data:
